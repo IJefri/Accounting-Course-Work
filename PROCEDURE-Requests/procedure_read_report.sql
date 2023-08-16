@@ -1,9 +1,9 @@
 CREATE PROCEDURE read_report
 	@reportID INT
-	-- Зчитування даних про звіт по номеру
+	-- Р—С‡РёС‚СѓРІР°РЅРЅСЏ РґР°РЅРёС… РїСЂРѕ Р·РІС–С‚ РїРѕ РЅРѕРјРµСЂСѓ
 	AS
 	BEGIN TRANSACTION;
 	SELECT *
-	  FROM Авансовый_отчет
+	  FROM РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
 	 WHERE id = @reportID;
 	COMMIT;
