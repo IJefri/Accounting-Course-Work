@@ -1,9 +1,9 @@
 CREATE PROCEDURE delete_report
 	@reportID INT
-	-- Видалення звіту по порядковому номеру
+	-- Р’РёРґР°Р»РµРЅРЅСЏ Р·РІС–С‚Сѓ РїРѕ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ
 	AS
 	BEGIN TRANSACTION;
 		DELETE
-		  FROM Авансовый_отчет
+		  FROM РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
 		 WHERE id = @reportID -- (number)
 	COMMIT;
