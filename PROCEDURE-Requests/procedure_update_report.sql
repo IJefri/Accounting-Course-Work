@@ -8,69 +8,69 @@ CREATE PROCEDURE update_report
 	@daily MONEY,
 	@destinationID INT,
 	@staffID INT
-	-- Оновлення звіту по параметрам
+	-- РћРЅРѕРІР»РµРЅРЅСЏ Р·РІС–С‚Сѓ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј
 	AS
 	BEGIN TRANSACTION;
 	IF @reportID IS NULL OR
-	   NOT EXISTS (SELECT * FROM Авансовый_отчет WHERE id = @reportID)
+	   NOT EXISTS (SELECT * FROM РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚ WHERE id = @reportID)
 		BEGIN
 			ROLLBACK TRANSACTION;
-			PRINT 'Помилка: Номер звіту пустий/не iснує'
+			PRINT 'РџРѕРјРёР»РєР°: РќРѕРјРµСЂ Р·РІС–С‚Сѓ РїСѓСЃС‚РёР№/РЅРµ iСЃРЅСѓС”'
 			RETURN;
 	    END
 	BEGIN TRY
 		IF @name IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET Имя = @name 
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET РРјСЏ = @name 
 			 WHERE id = @reportID;
 		END
 		IF @lastName IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET Фамилия = @lastName
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET Р¤Р°РјРёР»РёСЏ = @lastName
 			 WHERE id = @reportID;
 		END
 		IF @middleName IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET Отчество = @middleName
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET РћС‚С‡РµСЃС‚РІРѕ = @middleName
 			 WHERE id = @reportID;
 		END
 		IF @passage IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET проезд = @passage
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET РїСЂРѕРµР·Рґ = @passage
 			 WHERE id = @reportID;
 		END
 		IF @appartment IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET квартирные = @appartment
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET РєРІР°СЂС‚РёСЂРЅС‹Рµ = @appartment
 			 WHERE id = @reportID;
 		END
 		IF @daily IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET суточные = @daily
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET СЃСѓС‚РѕС‡РЅС‹Рµ = @daily
 			 WHERE id = @reportID;
 		END
 		IF @destinationID IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET Пункт_id = @destinationID
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET РџСѓРЅРєС‚_id = @destinationID
 			 WHERE id = @reportID;
 		END
 		IF @staffID IS NOT NULL
 		BEGIN
-			UPDATE Авансовый_отчет
-			   SET Сотрудник_id = @staffID
+			UPDATE РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚
+			   SET РЎРѕС‚СЂСѓРґРЅРёРє_id = @staffID
 			 WHERE id = @reportID;
 		END
 	END TRY
 	BEGIN CATCH
 		ROLLBACK TRANSACTION;
-		PRINT 'Помикла: Перевiрьте данi'
+		PRINT 'РџРѕРјРёРєР»Р°: РџРµСЂРµРІiСЂСЊС‚Рµ РґР°РЅi'
 		RETURN;
 	END CATCH
 	COMMIT;
