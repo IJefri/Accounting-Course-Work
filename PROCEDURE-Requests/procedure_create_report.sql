@@ -7,7 +7,7 @@ CREATE PROCEDURE create_report
 	@daily MONEY,
 	@destinationID INT,
 	@staffID INT
-	-- Створення звіту по параметрам
+	-- РЎС‚РІРѕСЂРµРЅРЅСЏ Р·РІС–С‚Сѓ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј
 	AS
 	BEGIN TRANSACTION;
 	IF @lastName IS NULL OR
@@ -20,16 +20,16 @@ CREATE PROCEDURE create_report
 	   @staffID IS NULL 
 	    BEGIN
 			ROLLBACK TRANSACTION;
-			PRINT 'Помилка: Пусті параметри'
+			PRINT 'РџРѕРјРёР»РєР°: РџСѓСЃС‚С– РїР°СЂР°РјРµС‚СЂРё'
 			RETURN;
 	    END
 	BEGIN TRY
-		INSERT INTO Авансовый_отчет(Имя, Фамилия, Отчество, проезд, квартирные, суточные, Пункт_ID, Сотрудник_ID)
+		INSERT INTO РђРІР°РЅСЃРѕРІС‹Р№_РѕС‚С‡РµС‚(РРјСЏ, Р¤Р°РјРёР»РёСЏ, РћС‚С‡РµСЃС‚РІРѕ, РїСЂРѕРµР·Рґ, РєРІР°СЂС‚РёСЂРЅС‹Рµ, СЃСѓС‚РѕС‡РЅС‹Рµ, РџСѓРЅРєС‚_ID, РЎРѕС‚СЂСѓРґРЅРёРє_ID)
 		VALUES(@lastName, @name, @middleName, @passage, @appartment, @daily, @destinationID, @staffID)
 	END TRY
 	BEGIN CATCH
 		ROLLBACK TRANSACTION;
-		PRINT 'Помикла: Перевiрьте данi'
+		PRINT 'РџРѕРјРёРєР»Р°: РџРµСЂРµРІiСЂСЊС‚Рµ РґР°РЅi'
 		RETURN;
 	END CATCH
 	COMMIT;
